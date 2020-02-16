@@ -1,0 +1,51 @@
+body {
+    font-family: Courier, sans-serif;
+    background-color: #0BB5FF;
+}
+
+.main-container {
+    background-color: #ffffff;
+    border-radius: 25px;
+    width: 40%;
+    height: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.welcome-header {
+    height: 20%;
+    width: 90%;
+    font-family: courier;
+    font-size: 4em;
+    border-radius: 25px;
+    padding: 5px;
+    margin: 10px auto;
+    display: inline-block
+}
+
+.login-input {
+    height: 40%;
+    width: 90%;
+    border: 3px dotted #696969;
+    border-radius: 25px;
+    padding: 10px;
+    margin: auto;
+    display: inline-block
+}
+
+
+button {
+    color: #696969;
+    font-weight: bold;
+    font-family: Courier;
+    font-size: 20px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    background: #eea00e;
+    border: 3px solid #696969;
+    margin: auto 30px;
+    height: 50px;
+    width: 100px;
+    float: right;
+    transition: all 0.4s ease 0s;
+}
