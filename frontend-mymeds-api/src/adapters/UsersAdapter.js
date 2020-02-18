@@ -1,6 +1,6 @@
 class UsersAdapter {
     constructor(){
-        this.baseURL = 'http://localhost:3000/api/v1/users';
+        this.baseURL = "http://localhost:3000/api/v1/users";
     }
 
     getUsers(){
@@ -10,7 +10,7 @@ class UsersAdapter {
     }
 
     getUser(userId){
-        return fetch(`{this.baseURL}/${userId}`)
+        return fetch(`${this.baseURL}/${userId}`)
         .then(res => res.json()
         )
     }
