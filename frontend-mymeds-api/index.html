@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,15 +6,13 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="styles/style.css">
-        <script src="src/index.js"></script>
-        
     </head>
     <body>
-        <div class='main-container'>
-            <div class='welcome-header'>
+        <div id='main-container'>
+            <div id='welcome-header'>
                 <h2>MyMeds</h2>
             </div>
-            <div class='login-input'>
+            <div id='login-input'>
                 <form action="" method="post">
                     <fieldset><legend>Login</legend>
                     <label for="name"><span>Username:</span></label><input type="text" id="name">
@@ -27,11 +21,15 @@
                     </fieldset>
                 </form>
             </div>
-            <div class='footer'>
+            <div id='footer'>
                 <img src="src/images/happypill.jpg" width="150" height= "150" alt="cute pill">
-                <button>Submit</button>
+                <button type="submit" id="button-login">Submit</button>
             </div>
         </div>
-       
+        <script src="src/components/users.js"></script>
+        <script src="src/components/user.js"></script>
+        <script src="src/components/app.js"></script>
+        <script src="src/adapters/UsersAdapter.js"></script>
+        <script src="src/index.js"></script>
     </body>
 </html>

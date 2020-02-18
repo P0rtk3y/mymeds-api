@@ -1,15 +1,36 @@
-const BASE_URL = 'http://localhost:3000/api/v1';
-const USERS_URL = `${BASE_URL}/users`
-
 class UsersAdapter {
     constructor(){
-        this.USERS_URL;
+        this.baseURL = 'http://localhost:3000/api/v1/users';
     }
 
     getUsers(){
-        return fetch(this.USERS_URL)
+        return fetch(this.baseURL)
         .then(res => res.json()
         )
+    }
+
+    getUser(userId){
+        return fetch(`{this.baseURL}/${userId}`)
+        .then(res => res.json()
+        )
+    }
+
+    createUser(name, email, password){
+        let user = {
+            name: name,
+            email: email,
+            password: password
+        }
+        return fetch(this.baseURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({user})
+        })
+        .then(res => res.json())
+        .catch(error => console.error(error))
     }
 }
 

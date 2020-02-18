@@ -3,16 +3,16 @@ body {
     background-color: #0BB5FF;
 }
 
-.main-container {
+#main-container {
     background-color: #ffffff;
-    border-radius: 25px;
+    border-radius: 40px;
     width: 40%;
     height: 700px;
     margin: 0 auto;
     text-align: center;
 }
 
-.welcome-header {
+#welcome-header {
     height: 20%;
     width: 90%;
     font-family: courier;
@@ -23,8 +23,8 @@ body {
     display: inline-block
 }
 
-.login-input {
-    height: 35%;
+#login-input {
+    height: 45%;
     width: 90%;
     border: 3px dotted #696969;
     border-radius: 25px;
@@ -34,26 +34,26 @@ body {
 }
 
 
-.login-input label {
+#login-input label {
     display: block;
     margin-bottom: 5px
 }
 
-.login-input label > span {
+#login-input label > span {
     float: left;
     width: 70px;
     font: bold 13px;
     padding: 6px
 }
 
-.login-input fieldset {
+#login-input fieldset {
     border-radius: 20px;
 	margin: 15px 0px 50px 0px;
 	border: 1px solid #e7a94c;
 	padding: 30px;
 }
 
-.login-input fieldset legend {
+#login-input fieldset legend {
     color: rgb(15, 3, 8);
 	border-top: 1px solid #e7a94c;
 	border-left: 1px solid #e7a94c;
@@ -66,7 +66,7 @@ body {
 	font-size: 18px;
 }
 
-.login-input input[type=text], input[type=email], input[type=password] {
+#login-input input[type=text], input[type=email], input[type=password] {
     border-radius: 5px;
 	border: 1px solid #FFC2DC;
 	color: rgb(0, 3, 5);
@@ -89,9 +89,9 @@ button {
     text-transform: uppercase;
     background: #eea00e;
     border: 3px solid #696969;
-    margin: 5px 30px;
+    margin: 5px 12px;
     height: 50px;
-    width: 100px;
+    width: 120px;
     float: right;
     transition: all 0.4s ease 0s;
 }
