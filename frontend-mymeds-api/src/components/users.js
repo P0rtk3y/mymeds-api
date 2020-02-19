@@ -24,6 +24,7 @@ class Users {
             let clickedButton = e.target.id;
             switch (clickedButton){
                 case 'button-login': this.fetchAndLoginUser(this)
+                case 'button-signup': this.createUser(this)
             }
         }
         e.stopPropagation()
@@ -36,6 +37,10 @@ class Users {
                 users.forEach(user => this.users.push(new User(user)))
                 }
             )
+    }
+
+    createUser(){
+
     }
    
 
