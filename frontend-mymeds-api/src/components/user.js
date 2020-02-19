@@ -9,7 +9,8 @@ class User {
 
     initBindingsAndEventListeners(){
         this.welcome = document.querySelector('header')
-        this.footer = document.getElementById('footer')
+        this.buttonEvent = document.querySelector('#buttons')
+        this.buttonEvent.addEventListener("click", this.eventFunc.bind(this), false)
     }
 
     renderUser(){
@@ -19,8 +20,17 @@ class User {
         const logoutButton = document.createElement('button')
             logoutButton.innerHTML = "Logout"
             logoutButton.setAttribute('id', 'logout-button')
-            this.footer.appendChild(logoutButton)
-            logoutButton.addEventListener('click', window.location.reload(true))
+            this.buttonEvent.appendChild(logoutButton)
+    }
+
+    eventFunc(e){
+        if (e.target !== e.currentTarget){
+            let clickedButton = e.target.id;
+            switch (clickedButton){
+                case 'logout-button': window.location.reload(true)
+            }
+        }
+        e.stopPropagation()
     }
 
 }

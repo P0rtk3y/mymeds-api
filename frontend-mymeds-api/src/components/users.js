@@ -4,20 +4,30 @@ class Users {
         this.adapter = new UsersAdapter()
         this.initBindingAndEventListeners()
         this.fetchAndLoadUsers()
-        this.fetchAndLoginUser()
+        // this.fetchAndLoginUser()
     }
 
     initBindingAndEventListeners(){
-        this.div = document.getElementById('login-input')
+        this.div = document.querySelector('#login-input')
         this.welcome = document.querySelector('header')
-        this.userEmailField = document.getElementById('email')
-        this.userNameField = document.getElementById('name')
-        this.userPasswordField = document.getElementById('password')
-        this.submitButton = document.getElementById('button-login')
-        this.submitButton.addEventListener('click', this.fetchAndLoginUser.bind(this))
-        this.signupButton = document.getElementById('button-signup')
+        this.userEmailField = document.querySelector('#email')
+        this.userNameField = document.querySelector('#name')
+        this.userPasswordField = document.querySelector('#password')
+        this.submitButton = document.querySelector('#button-login')
+        this.buttonEvent = document.querySelector('#buttons')
+        this.buttonEvent.addEventListener("click", this.eventFunc.bind(this), false)
+        this.signupButton = document.querySelector('#button-signup')
     }
 
+    eventFunc(e){
+        if (e.target !== e.currentTarget){
+            let clickedButton = e.target.id;
+            switch (clickedButton){
+                case 'button-login': this.fetchAndLoginUser(this)
+            }
+        }
+        e.stopPropagation()
+    }
 
     fetchAndLoadUsers(){
         this.adapter
@@ -29,8 +39,7 @@ class Users {
     }
    
 
-    fetchAndLoginUser(e){
-        e.preventDefault
+    fetchAndLoginUser(){
         const userEmail = this.userEmailField.value
         const userObj = this.users.find(user => user.email === userEmail)
         if(!!userObj){
