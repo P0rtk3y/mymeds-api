@@ -1,1 +1,1 @@
-let app = new App()
+const app = new App()
