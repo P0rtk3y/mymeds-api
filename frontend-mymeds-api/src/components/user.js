@@ -21,16 +21,26 @@ class User {
             logoutButton.innerHTML = "Logout"
             logoutButton.setAttribute('id', 'logout-button')
             this.buttonEvent.appendChild(logoutButton)
+        const addMedButton = document.createElement('button')
+            addMedButton.innerHTML = "Add"
+            addMedButton.setAttribute('id', 'med-button')
+            addMedButton.style.backgroundColor = "red"
+            this.buttonEvent.appendChild(addMedButton)
     }
 
     eventFunc(e){
         if (e.target !== e.currentTarget){
             let clickedButton = e.target.id;
             switch (clickedButton){
+                // case 'med-button': this.message()
+                //     break;
                 case 'logout-button': window.location.reload(true)
+                    break;
+                
             }
-        }
-        e.stopPropagation()
+            e.stopPropagation()
+        }  
     }
+
 
 }

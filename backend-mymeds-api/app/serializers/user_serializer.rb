@@ -4,6 +4,6 @@ class UserSerializer
     end
 
     def to_serialized_json
-        @user.to_json(only: [:id, :name, :email])
+        @user.to_json(only: [:id, :email])
     end
 end

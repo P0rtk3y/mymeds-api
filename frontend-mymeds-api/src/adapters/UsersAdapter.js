@@ -16,7 +16,7 @@ class UsersAdapter {
     }
 
     createUser(name, email, password){
-        let user = {
+        const user = {
             name: name,
             email: email,
             password: password
@@ -30,7 +30,6 @@ class UsersAdapter {
             body: JSON.stringify({user})
         })
         .then(res => res.json())
-        .catch(error => console.error(error))
     }
 }
 
