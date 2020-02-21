@@ -52,14 +52,10 @@ class Users {
                 .then(user => {
                     this.user = new User(user)
                 })
-                .then(() => {
-                    this.setUser()
-                })
             } else {
                 alert(`${email} is taken.`)
             }
         }
-    
    
 
     fetchAndLoginUser(){

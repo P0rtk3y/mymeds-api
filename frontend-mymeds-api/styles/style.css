@@ -22,11 +22,11 @@ body {
     display: inline-block
 }
 
-#welcome-header div {
-    font-size: 8vh;
+/* #welcome-header div {
+    
     font-weight: 100;
-    margin: 30px auto;
-}
+    margin: 10px 0px 0px 10px;
+} */
 
 header {
     margin: 65px auto;
@@ -39,7 +39,7 @@ header {
     border: 3px dotted #696969;
     border-radius: 25px;
     padding: 10px;
-    margin: auto;
+    margin: 2px;
     display: inline-block
 }
 
@@ -93,6 +93,23 @@ header {
 img {
     float: left;
     margin: 5px 10px 20px 50px
+}
+
+header div:first-child {
+    display: inline-block;
+    font-size: 3vw;
+    float: left;
+    width: 75%;
+    margin: 29px 0px 5px 0px
+}
+
+header .timeImg {
+    display: inline-block;
+    float: right;
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+    margin: -35px 1px
 }
 
 button {

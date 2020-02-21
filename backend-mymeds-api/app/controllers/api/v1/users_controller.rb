@@ -8,7 +8,7 @@ class Api::V1::UsersController < ApplicationController
     
     def new 
         @user = User.new
-        render json: UserSerializer.new(user)
+        render json: UserSerializer.new(@user)
     end 
     
     def create
