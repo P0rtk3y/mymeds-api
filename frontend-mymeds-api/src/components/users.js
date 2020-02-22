@@ -28,7 +28,6 @@ class Users {
                 case 'button-signup': this.createAndLoginUser(this)
                     break;
             }
-            
         }
         e.stopPropagation()
     }
@@ -51,6 +50,9 @@ class Users {
             this.adapter.createUser(userName, email, password)
                 .then(user => {
                     this.user = new User(user)
+                })
+                .then(()=>{
+                    this.setUser()
                 })
             } else {
                 alert(`${email} is taken.`)

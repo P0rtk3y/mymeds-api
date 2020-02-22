@@ -39,7 +39,7 @@ class User {
             const addSunImg = document.createElement("img")
             addSunImg.src = "src/images/sun.png"
             addSunImg.setAttribute("class", "timeImg")
-            addSun.appendChild(addSunImg)
+            addTime.appendChild(addSunImg)
             this.div.style.backgroundColor = "#DBC695"
         } else {
             const addMoonImg = document.createElement("img")
@@ -50,7 +50,9 @@ class User {
         }
     }
 
+
     eventFunc(e){
+        e.preventDefault()
         if (e.target !== e.currentTarget){
             let clickedButton = e.target.id;
             switch (clickedButton){
@@ -58,10 +60,9 @@ class User {
                     break;
                 case 'logout-button': window.location.reload(true)
                     break;
-                
             }
-            e.stopPropagation()
         }  
+        e.stopPropagation()
     }
 
 

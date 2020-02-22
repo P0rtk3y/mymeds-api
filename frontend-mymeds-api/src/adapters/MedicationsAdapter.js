@@ -1,4 +1,4 @@
-class UsersAdapter {
+class MedicationsAdapter {
     constructor(){
         this.baseURL = "http://localhost:3000/api/v1/medications";
     }
@@ -9,8 +9,13 @@ class UsersAdapter {
         )
     }
 
+    getMedication(medId){
+        return fetch(`${this.baseURL}/${medId}`)
+        .then(res => res.json()
+        )
+    }
+
     createMedications(name, className, photo, info){
-        console.log(hello)
         const medication = {
             name: name, 
             class: className,
