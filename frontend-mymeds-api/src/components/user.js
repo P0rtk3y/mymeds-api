@@ -35,7 +35,7 @@ class User {
         this.welcome.appendChild(addTime)
         let getTime = new Date()
         let currentTime = getTime.getHours()
-        if (currentTime > 4 && currentTime < 11){
+        if (currentTime > 1 && currentTime < 11){
             const addSunImg = document.createElement("img")
             addSunImg.src = "src/images/sun.png"
             addSunImg.setAttribute("class", "timeImg")
