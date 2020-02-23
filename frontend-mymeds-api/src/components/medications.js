@@ -4,6 +4,7 @@ class Medications {
         this.adapter = new MedicationsAdapter()
         this.initBindingAndEventListeners()
         this.fetchAndLoadMedications()
+        // this.renderMedCard = this.renderMedCard.bind(this)
     }
 
     initBindingAndEventListeners(){
@@ -26,7 +27,7 @@ class Medications {
         this.div.innerHTML = ""
         let medNames = []
         this.medications.forEach(medication => medNames.push(medication.name))
-        let htmlBlock = '<form autocomplete="off">' + 
+        let htmlBlock = '<form autocomplete="off" action="" method="POST">' + 
                         '<div id="searchContainer">' + 
                         '<input id="searchBar" type="text" placeholder="Search Medications" list="meds_list">' +
                         '<datalist id="meds_list">' + 
@@ -38,39 +39,52 @@ class Medications {
         let med_input = document.querySelector('#searchBar')
         let meds_list = document.querySelector('#meds_list')
         const submit_med = document.querySelector("#submit_med")
-        let selectedMed = ""
-        med_input.addEventListener("keyup", function(e){autocomp(e)})
+        let medOption = ""
+        let myMed = ""
+        med_input.addEventListener("keyup", e => autocomp(e))
 
         function autocomp(e){
-            let input = e.target 
-            let min_char = 0
-
-            if(input.value.length < min_char){
-                return;
-            }else{
-                meds_list.innerHTML = ""
-                medNames.forEach(function(med){
-                    selectedMed = document.createElement('option')
-                    selectedMed.value = med
-                    meds_list.appendChild(selectedMed)
-                })
-            }
-            med_input.addEventListener("keypress", function(e){
-                if(e.key === 'Enter'){
-                    loadMed(e)
-                }
-            }, true)
-            submit_med.addEventListener("submit", function(e){
-                    loadMed(e)
-            }, false)
-
-            function loadMed(e){
+            if(e.keyCode !== 13){
                 e.preventDefault()
-                let medCard = med_input.value
+                let input = e.target 
+                let min_char = 0
+                if(input.value.length < min_char){
+                    return;
+                }else{
+                    meds_list.innerHTML = ""
+                    medNames.forEach(function(med){
+                        medOption = document.createElement('option')
+                        medOption.value = med
+                        meds_list.appendChild(medOption)
+                    })
+                }
+            }else{
+            myMed = med_input.value
+            this.renderMedCard(myMed)
             }
         }
 
-        
+        submit_med.addEventListener("click", e => {
+            e.preventDefault()
+            e.stopPropagation()
+            this.renderMedCard(med_input.value)
+        }, false)
+
+    }
+
+    renderMedCard(myMed){
+        alert(myMed)
+        const medCard = this.medications.find(medication => medication.name === myMed)
+        if(!!medCard){
+            const medId = medCard.id 
+            this.adapter.getMedication(medId)
+                .then(medication => {
+                    this.medication = new Medication(medication)
+                })
+                .then(() => {
+                    this.medication.renderMedication()
+                })
+        }
     }
 
     eventFunc(e){

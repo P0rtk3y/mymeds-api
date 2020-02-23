@@ -4,6 +4,7 @@ class User {
         this.name = userObjJSON.name 
         this.email = userObjJSON.email
         this.password = userObjJSON.password
+        this.myMeds = []
         this.initBindingsAndEventListeners()
     }
 
@@ -35,7 +36,7 @@ class User {
         this.welcome.appendChild(addTime)
         let getTime = new Date()
         let currentTime = getTime.getHours()
-        if (currentTime > 1 && currentTime < 11){
+        if (currentTime > 1 && currentTime < 16){
             const addSunImg = document.createElement("img")
             addSunImg.src = "src/images/sun.png"
             addSunImg.setAttribute("class", "timeImg")
@@ -49,7 +50,6 @@ class User {
             this.div.style.backgroundColor = "#BEC5C7"
         }
     }
-
 
     eventFunc(e){
         e.preventDefault()
