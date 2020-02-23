@@ -104,6 +104,28 @@ header {
 
 }
 
+#className{
+    height: 45%;
+    width: 25%;
+    border: 3px dotted #5a5252;
+    border-radius: 25px;
+    border-radius: 20%;
+    background-color: #F1F1F1;
+    padding: 5px;
+    margin: 10px 10px 10px 50px; 
+    font-size: 16px;
+    float: left
+}
+
+#medPhoto{
+    width: 25%;
+    height: 25%;
+    margin: 10px;
+    border: 3px solid #5a5252;
+    border-radius: 20%;
+    float: right;
+}
+
 .required {
     color: red
 }

@@ -73,7 +73,6 @@ class Medications {
     }
 
     renderMedCard(myMed){
-        alert(myMed)
         const medCard = this.medications.find(medication => medication.name === myMed)
         if(!!medCard){
             const medId = medCard.id 
