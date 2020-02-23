@@ -11,6 +11,7 @@ class Medication {
     initBindingsAndEventListeners(){
         this.div = document.querySelector('#login-input')
         this.buttonEvent = document.querySelector('#buttons')
+        this.addMedBtn = document.querySelector('#addMed-button')
         this.buttonEvent.addEventListener("click", this.eventFunc.bind(this), false)
     }
 
@@ -41,6 +42,11 @@ class Medication {
             medInfo.append(classBox, infoBox)
         this.div.appendChild(medInfo)
         this.colorize()
+        this.addMedBtn.addEventListener("click", e => {
+            e.preventDefault()
+            e.stopPropagation()
+            this.addMedToUser()
+        }, false)
     }
 
     colorize(){
@@ -59,15 +65,21 @@ class Medication {
         }
     }
 
+    addMedToUser(){
+        const medId = this.id
+    
+    }
+
+
     eventFunc(e){
+        e.preventDefault()
         if (e.target !== e.currentTarget){
             let clickedButton = e.target.id;
             switch (clickedButton){
                 case 'logout-button': window.location.reload(true)
                     break;
-                
             }
-            e.stopPropagation()
         }  
+        e.stopPropagation()
     }
 }

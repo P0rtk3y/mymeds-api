@@ -14,6 +14,7 @@ class Medications {
     }
 
     fetchAndLoadMedications(){
+        this.updatePage()
         this.adapter
             .getMedications()
             .then(medications => {
@@ -86,13 +87,17 @@ class Medications {
         }
     }
 
+    updatePage(){
+        const addBtn = document.querySelector('#med-button')
+            addBtn.setAttribute('id', 'addMed-button')
+            addBtn.innerHTML = "MyMed"
+    }
+
     eventFunc(e){
         e.preventDefault()
         if (e.target !== e.currentTarget){
             let clickedButton = e.target.id;
             switch (clickedButton){
-                case 'med-button': alert("why?!")
-                    break;
                 case 'logout-button': window.location.reload(true)
                     break;
             }

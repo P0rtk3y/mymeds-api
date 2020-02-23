@@ -23,12 +23,16 @@ class User {
             logoutButton.innerHTML = "Logout"
             logoutButton.setAttribute('id', 'logout-button')
             this.buttonEvent.appendChild(logoutButton)
-        const addMedButton = document.createElement('button')
-            addMedButton.innerHTML = "Add"
-            addMedButton.setAttribute('id', 'med-button')
-            addMedButton.style.backgroundColor = "#EC8668"
-            this.buttonEvent.appendChild(addMedButton)
+        const addButton = document.createElement('button')
+            addButton.innerHTML = "Add"
+            addButton.setAttribute('id', 'med-button')
+            addButton.style.backgroundColor = "#EC8668"
+            this.buttonEvent.appendChild(addButton)
         this.setTime(this)
+    }
+
+    renderUserMeds(){
+
     }
 
     setTime(){

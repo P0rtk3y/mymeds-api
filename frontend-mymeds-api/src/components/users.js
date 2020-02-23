@@ -19,19 +19,6 @@ class Users {
         this.signupButton = document.querySelector('#button-signup')
     }
 
-    eventFunc(e){
-        if (e.target !== e.currentTarget){
-            let clickedButton = e.target.id;
-            switch (clickedButton){
-                case 'button-login': this.fetchAndLoginUser(this)
-                    break;
-                case 'button-signup': this.createAndLoginUser(this)
-                    break;
-            }
-        }
-        e.stopPropagation()
-    }
-
     fetchAndLoadUsers(){
         this.adapter
             .getUsers()
@@ -89,5 +76,17 @@ class Users {
         this.submitButton.remove()
     }
     
+    eventFunc(e){
+        if (e.target !== e.currentTarget){
+            let clickedButton = e.target.id;
+            switch (clickedButton){
+                case 'button-login': this.fetchAndLoginUser(this)
+                    break;
+                case 'button-signup': this.createAndLoginUser(this)
+                    break;
+            }
+        }
+        e.stopPropagation()
+    }
    
 }
