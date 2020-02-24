@@ -16,11 +16,10 @@ class Api::V1::MedicationsController < ApplicationController
 
     def create
         medication = Medication.new(medication_params)
-        binding.pry
         if medication.save 
             render json: MedicationSerializer.new(medication).to_serialized_json
         else 
-            render :new 
+            render json: {status: 500}
         end
     end
 
@@ -36,12 +35,14 @@ class Api::V1::MedicationsController < ApplicationController
     def destroy 
         @medication = Medication.find(params[:id])
         @medication.delete 
+
+        render json: {}
     end 
 
     private
 
     def medication_params
-        params.require(:medication).permit(:name, :class, :photo, :info)
+        params.require(:medication).permit(:name, :class, :photo, :info, :user_id)
     end
 
 

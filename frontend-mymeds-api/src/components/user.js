@@ -4,6 +4,7 @@ class User {
         this.name = userObjJSON.name 
         this.email = userObjJSON.email
         this.password = userObjJSON.password
+        this.adapter = new UsersAdapter()
         this.myMeds = []
         this.initBindingsAndEventListeners()
     }
@@ -16,9 +17,14 @@ class User {
     }
 
     renderUser(){
-        let welcomeMessage = document.createElement("div")
-            welcomeMessage.innerHTML = ` ${this.name}'s Meds: `
-            this.welcome.appendChild(welcomeMessage)
+        let welcomeMessage = document.createElement('div')
+            welcomeMessage.setAttribute('id', 'headerName')
+            welcomeMessage.setAttribute('contenteditable', 'true')
+            welcomeMessage.innerHTML = `${this.name}`
+        let welcomeMessage2 = document.createElement('div')
+            welcomeMessage2.innerHTML = "|| Rx"
+            welcomeMessage2.setAttribute('id', 'headerMeds')
+        this.welcome.append(welcomeMessage, welcomeMessage2)
         const logoutButton = document.createElement('button')
             logoutButton.innerHTML = "Logout"
             logoutButton.setAttribute('id', 'logout-button')
@@ -29,6 +35,20 @@ class User {
             addButton.style.backgroundColor = "#EC8668"
             this.buttonEvent.appendChild(addButton)
         this.setTime(this)
+        welcomeMessage.addEventListener('click', e => {
+            e.preventDefault()
+            this.modifyUsername(this)
+        }, false)
+    }
+
+    modifyUsername(){
+        let oldName = this.name
+        let userId = this.id
+        let getName = document.querySelector('#headerName')
+        let newName = getName.innerHTML
+        if(newName !== oldName){
+            this.adapter.updateUser(newName, userId)
+        }
     }
 
     renderUserMeds(){

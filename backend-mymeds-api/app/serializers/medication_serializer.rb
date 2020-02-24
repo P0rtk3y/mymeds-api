@@ -4,7 +4,7 @@ class MedicationSerializer
     end
 
     def to_serialized_json
-        @user.to_json(only: [:id, :name, :className, :photo, :info])
+        @medication.to_json(only: [:id, :name, :className, :photo, :info, :user_id])
     end
 
 end

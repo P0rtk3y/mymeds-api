@@ -33,4 +33,5 @@ class MedicationsAdapter {
         .then(res => res.json())
         
     }
+
 }

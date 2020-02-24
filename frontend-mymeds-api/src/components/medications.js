@@ -89,7 +89,7 @@ class Medications {
 
     updatePage(){
         const addBtn = document.querySelector('#med-button')
-            addBtn.setAttribute('id', 'addMed-button')
+            addBtn.setAttribute('id', 'myMed-button')
             addBtn.innerHTML = "MyMed"
     }
 

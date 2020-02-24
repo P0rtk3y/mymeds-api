@@ -20,6 +20,14 @@ class Api::V1::UsersController < ApplicationController
         end
     end
 
+    def update 
+        if params[:id] != 'undefined'
+            user = User.find(params[:id])
+            user.update(user_params)
+            render json: UserSerializer.new(@user).to_serialized_json
+        end 
+    end 
+
     def show 
         @user = User.find(params[:id])
         render json: @user 
@@ -34,6 +42,6 @@ class Api::V1::UsersController < ApplicationController
 
     private
         def user_params
-            params.require(:user).permit(:name, :email, :password)
+            params.require(:user).permit(:id, :name, :email)
         end
 end

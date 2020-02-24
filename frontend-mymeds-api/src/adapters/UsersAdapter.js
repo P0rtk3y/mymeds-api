@@ -31,6 +31,21 @@ class UsersAdapter {
         })
         .then(res => res.json())
     }
+
+    updateUser(name, userId){
+        const user = {
+            name: name
+        }
+        return fetch(`${this.baseURL}/${userId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify({user})
+        })
+        .then(res => res.json())
+        .catch(error => console.log(error))
+    }
 }
 
 // const adapter = {

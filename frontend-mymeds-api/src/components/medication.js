@@ -11,7 +11,7 @@ class Medication {
     initBindingsAndEventListeners(){
         this.div = document.querySelector('#login-input')
         this.buttonEvent = document.querySelector('#buttons')
-        this.addMedBtn = document.querySelector('#addMed-button')
+        this.addMedBtn = document.querySelector('#myMed-button')
         this.buttonEvent.addEventListener("click", this.eventFunc.bind(this), false)
     }
 
@@ -50,7 +50,7 @@ class Medication {
     }
 
     colorize(){
-        let classSchedule = this.className.split(" ")
+        let classSchedule = this.className.split("")
         let classBox = document.querySelector('#className')
         if(classSchedule.includes("2")){
             classBox.style.backgroundColor = "#DE7658"
