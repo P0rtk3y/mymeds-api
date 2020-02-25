@@ -88,9 +88,13 @@ class Medications {
     }
 
     updatePage(){
-        const addBtn = document.querySelector('#med-button')
-            addBtn.setAttribute('id', 'myMed-button')
-            addBtn.innerHTML = "MyMed"
+
+        if(!document.querySelector('#myMed-button')){
+            let addBtn = document.querySelector('#add-button')
+                addBtn.setAttribute('id', 'myMed-button')
+                addBtn.innerHTML = "MyMed"
+                this.buttonEvent.appendChild(addBtn)
+        }
     }
 
     eventFunc(e){

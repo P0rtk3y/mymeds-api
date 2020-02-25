@@ -26,7 +26,7 @@ class Api::V1::MedicationsController < ApplicationController
     def update 
         @medication = Medication.find(params[:id])
         if @medication.update(medication_params)
-            render json: MedicationSerializer.new(medication)
+            render json: MedicationSerializer.new(@medication)
         else 
             render json: {status: 500}
         end 

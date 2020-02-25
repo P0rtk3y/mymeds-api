@@ -40,7 +40,8 @@ header {
     border-radius: 25px;
     padding: 10px;
     margin: 2px;
-    display: inline-block
+    display: inline-block;
+    overflow: scroll
 }
 
 
@@ -104,11 +105,10 @@ header {
 
 }
 
-#className{
+#className {
     height: 45%;
     width: 25%;
     border: 3px dotted #5a5252;
-    border-radius: 25px;
     border-radius: 20%;
     background-color: #F1F1F1;
     padding: 5px;
@@ -117,7 +117,26 @@ header {
     float: left
 }
 
-#medPhoto{
+.medName {
+    width: 75%;
+    height: 55px;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #FFC2DC;
+    box-shadow: inset 1px 1px 4px rgb(236, 206, 149);
+	background: #FFEFF6;
+    background-color: #F1F1F1;
+    float: left;
+    display: inline-block
+}
+
+.dataContainer {
+    height: 60px;
+    width: 95%;
+    border-radius: 5%;
+}
+
+#medPhoto {
     width: 25%;
     height: 25%;
     margin: 10px;
@@ -125,6 +144,17 @@ header {
     border-radius: 20%;
     float: right;
 }
+
+.medPhoto{
+    width: 15%;
+    height: 15%;
+    margin: 5px;
+    border: 3px solid #5a5252;
+    border-radius: 20%;
+    display: inline-block;
+    float: right;
+}
+
 
 .required {
     color: red
@@ -152,16 +182,24 @@ header .timeImg {
     margin: -35px 1px
 }
 
+#headerId {
+    width: 10%;
+    font-size: 2.2vw;
+    display: inline-block;
+    margin: 29px 0px 0px 15px;
+    float: left
+}
+
 #headerName {
     width: 33%;
-    font-size: 2.5vw;
+    font-size: 2.2vw;
     display: inline-block;
-    margin: 29px 0px 0px 30px;
+    margin: 29px 0px 0px 0px;
     float: left
 }
 #headerMeds {
-    width: 35%;
-    font-size: 2.5vw;
+    width: 20%;
+    font-size: 2.2vw;
     display: inline-block;
     margin: 29px 0px 0px 0px;
     float: left

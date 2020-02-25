@@ -4,8 +4,9 @@ class User {
         this.name = userObjJSON.name 
         this.email = userObjJSON.email
         this.password = userObjJSON.password
+        this.medications = userObjJSON.medications
         this.adapter = new UsersAdapter()
-        this.myMeds = []
+        this.myMeds = new MedicationsAdapter()
         this.initBindingsAndEventListeners()
     }
 
@@ -17,6 +18,9 @@ class User {
     }
 
     renderUser(){
+        let welcomeMessageId = document.createElement('div')
+            welcomeMessageId.setAttribute('id', "headerId")
+            welcomeMessageId.innerHTML = `${this.id}`
         let welcomeMessage = document.createElement('div')
             welcomeMessage.setAttribute('id', 'headerName')
             welcomeMessage.setAttribute('contenteditable', 'true')
@@ -24,17 +28,13 @@ class User {
         let welcomeMessage2 = document.createElement('div')
             welcomeMessage2.innerHTML = "|| Rx"
             welcomeMessage2.setAttribute('id', 'headerMeds')
-        this.welcome.append(welcomeMessage, welcomeMessage2)
+        this.welcome.append(welcomeMessageId, welcomeMessage, welcomeMessage2)
         const logoutButton = document.createElement('button')
             logoutButton.innerHTML = "Logout"
             logoutButton.setAttribute('id', 'logout-button')
             this.buttonEvent.appendChild(logoutButton)
-        const addButton = document.createElement('button')
-            addButton.innerHTML = "Add"
-            addButton.setAttribute('id', 'med-button')
-            addButton.style.backgroundColor = "#EC8668"
-            this.buttonEvent.appendChild(addButton)
         this.setTime(this)
+        this.getUserMeds()
         welcomeMessage.addEventListener('click', e => {
             e.preventDefault()
             this.modifyUsername(this)
@@ -51,8 +51,40 @@ class User {
         }
     }
 
-    renderUserMeds(){
+    getUserMeds(){
+        this.div.innerHTML = ""
+        this.myMeds
+            .getMedications()
+            .then(medications => {
+                return medications.filter(m => m.user_id === this.id)
+                }
+            )
+            .then(medData => this.renderMeds(medData))
+    }
 
+    renderMeds(medData){
+        medData.sort((a,b) => (a.name > b.name)? 1 : -1).forEach(med => {
+                let dataContainer = document.createElement('div')
+                    dataContainer.setAttribute('id', 'dataContainer')
+                let dataName = document.createElement('div')
+                    dataName.setAttribute('class', 'medName')
+                    dataName.innerHTML = `${med.name} : ${med.className}` 
+                let dataPhoto = document.createElement('img')
+                    dataPhoto.setAttribute('class', 'medPhoto')
+                    dataPhoto.src = med.photo
+                dataContainer.append(dataName, dataPhoto)
+                this.div.appendChild(dataContainer)
+            }
+        )
+        if(!document.querySelector('#add-button')){
+            let addButton = document.createElement('button')
+                addButton.setAttribute('id', 'add-button')
+                addButton.style.backgroundColor = "#EC8668"
+                addButton.innerHTML = "Add"
+                this.buttonEvent.appendChild(addButton)
+        } else {
+            
+        }
     }
 
     setTime(){
@@ -73,14 +105,21 @@ class User {
             addTime.appendChild(addMoonImg)
             this.div.style.backgroundColor = "#BEC5C7"
         }
+        let home = document.querySelector(".timeImg")
+        home.addEventListener('click', e => {
+            e.preventDefault()
+            e.stopPropagation()
+            this.getUserMeds()
+        }, false)
     }
 
     eventFunc(e){
         e.preventDefault()
         if (e.target !== e.currentTarget){
-            let clickedButton = e.target.id;
+            let clickedButton = e.target.id
+          
             switch (clickedButton){
-                case 'med-button': new Medications()
+                case 'add-button': new Medications()
                     break;
                 case 'logout-button': window.location.reload(true)
                     break;

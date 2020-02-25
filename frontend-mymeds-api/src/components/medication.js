@@ -5,12 +5,15 @@ class Medication {
         this.className = medObjJSON.className
         this.photo = medObjJSON.photo
         this.info = medObjJSON.info
+        this.user = medObjJSON.user_id
+        this.adapter = new MedicationsAdapter()
         this.initBindingsAndEventListeners()
     }
 
     initBindingsAndEventListeners(){
         this.div = document.querySelector('#login-input')
         this.buttonEvent = document.querySelector('#buttons')
+        this.headerId= document.querySelector('#headerId')
         this.addMedBtn = document.querySelector('#myMed-button')
         this.buttonEvent.addEventListener("click", this.eventFunc.bind(this), false)
     }
@@ -67,7 +70,8 @@ class Medication {
 
     addMedToUser(){
         const medId = this.id
-    
+        let userId = this.headerId.innerHTML
+        this.adapter.updateMedication(medId, userId)
     }
 
 

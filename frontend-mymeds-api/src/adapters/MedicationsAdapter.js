@@ -31,7 +31,21 @@ class MedicationsAdapter {
             body: JSON.stringify({medication})
         })
         .then(res => res.json())
-        
+    }
+
+    updateMedication(medId, userId){
+        const medication = {
+            user_id: userId
+        }
+        return fetch(`${this.baseURL}/${medId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify({medication})
+        })
+        .then(res => res.json())
+        .catch(error => console.log(error))
     }
 
 }
