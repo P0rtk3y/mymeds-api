@@ -63,28 +63,49 @@ class User {
     }
 
     renderMeds(medData){
-        medData.sort((a,b) => (a.name > b.name)? 1 : -1).forEach(med => {
+        let getTime = new Date()
+        let currentTime = getTime.getHours()
+        
+        medData.sort((a,b) => (a.name > b.name) ? 1 : -1).forEach(med => {
+            if ((currentTime > 1 && currentTime < 16) && (med.time_of === 'morning')){
                 let dataContainer = document.createElement('div')
-                    dataContainer.setAttribute('id', 'dataContainer')
+                    dataContainer.setAttribute('id', `dataContainer-${med.name}-${med.id}`)
                 let dataName = document.createElement('div')
                     dataName.setAttribute('class', 'medName')
                     dataName.innerHTML = `${med.name} : ${med.className}` 
+                let photoInfo = document.createElement('a')
+                    photoInfo.href = med.info
+                    photoInfo.setAttribute("target", "_blank")
                 let dataPhoto = document.createElement('img')
                     dataPhoto.setAttribute('class', 'medPhoto')
                     dataPhoto.src = med.photo
-                dataContainer.append(dataName, dataPhoto)
+                    photoInfo.appendChild(dataPhoto)
+                dataContainer.append(dataName, photoInfo)
+                this.div.appendChild(dataContainer)
+            } else if (med.time_of === 'evening'){
+                let dataContainer = document.createElement('div')
+                    dataContainer.setAttribute('id', `dataContainer-${med.name}-${med.id}`)
+                let dataName = document.createElement('div')
+                    dataName.setAttribute('class', 'medName')
+                    dataName.innerHTML = `${med.name} : ${med.className}` 
+                let photoInfo = document.createElement('a')
+                    photoInfo.href = med.info
+                    photoInfo.setAttribute("target", "_blank")
+                let dataPhoto = document.createElement('img')
+                    dataPhoto.setAttribute('class', 'medPhoto')
+                    dataPhoto.src = med.photo
+                    photoInfo.appendChild(dataPhoto)
+                dataContainer.append(dataName, photoInfo)
                 this.div.appendChild(dataContainer)
             }
-        )
+        })
         if(!document.querySelector('#add-button')){
             let addButton = document.createElement('button')
                 addButton.setAttribute('id', 'add-button')
                 addButton.style.backgroundColor = "#EC8668"
                 addButton.innerHTML = "Add"
                 this.buttonEvent.appendChild(addButton)
-        } else {
-            
-        }
+        } 
     }
 
     setTime(){

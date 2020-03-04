@@ -42,7 +42,7 @@ class Api::V1::MedicationsController < ApplicationController
     private
 
     def medication_params
-        params.require(:medication).permit(:name, :class, :photo, :info, :user_id)
+        params.require(:medication).permit(:name, :class, :photo, :info, :user_id, :time_of)
     end
 
 

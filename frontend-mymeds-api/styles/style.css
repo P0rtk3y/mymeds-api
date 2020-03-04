@@ -197,6 +197,7 @@ header .timeImg {
     margin: 29px 0px 0px 0px;
     float: left
 }
+
 #headerMeds {
     width: 20%;
     font-size: 2.2vw;
@@ -204,6 +205,18 @@ header .timeImg {
     margin: 29px 0px 0px 0px;
     float: left
 
+}
+
+#time {
+    border-radius: 5px;
+    font-size: 12px;
+	border: 1px solid #FFC2DC;
+	color: rgb(0, 3, 5);
+    padding: 10px 0px 5px 8px;
+    margin: 20px 0px 0px 47px;
+	box-shadow: inset 1px 1px 4px rgb(236, 206, 149);
+	background: #FFEFF6;
+	width: 40%;
 }
 
 button {

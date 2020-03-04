@@ -6,6 +6,7 @@ class Medication {
         this.photo = medObjJSON.photo
         this.info = medObjJSON.info
         this.user = medObjJSON.user_id
+        this.time_of = medObjJSON.time_of
         this.adapter = new MedicationsAdapter()
         this.initBindingsAndEventListeners()
     }
@@ -43,7 +44,23 @@ class Medication {
             infoBox.appendChild(medPhoto)
         let medInfo = document.querySelector('#medInfoContainer')
             medInfo.append(classBox, infoBox)
+
         this.div.appendChild(medInfo)
+
+        
+        if (!document.querySelector('#selectTime')){
+            let timeBox = document.createElement('div')
+            timeBox.setAttribute("id", "selectTime")
+            let timeDropdownHTML = 
+                               '<select id="time">' + 
+                               '<option disabled selected value>' + "Choose dosage time" + '</option>' +
+                               '<option>' + "morning" + '</option>' + 
+                               '<option>' + "evening" + '</option>' + 
+                               '</select>'
+            timeBox.innerHTML = timeDropdownHTML
+            medInfo.appendChild(timeBox)
+        }
+        
         this.colorize()
         this.addMedBtn.addEventListener("click", e => {
             e.preventDefault()
@@ -71,7 +88,8 @@ class Medication {
     addMedToUser(){
         const medId = this.id
         let userId = this.headerId.innerHTML
-        this.adapter.updateMedication(medId, userId)
+        let addTime = document.querySelector("#time").value
+        this.adapter.updateMedication(medId, userId, addTime)
     }
 
 

@@ -33,9 +33,10 @@ class MedicationsAdapter {
         .then(res => res.json())
     }
 
-    updateMedication(medId, userId){
+    updateMedication(medId, userId, addTime){
         const medication = {
-            user_id: userId
+            user_id: userId,
+            time_of: addTime
         }
         return fetch(`${this.baseURL}/${medId}`, {
             method: 'PATCH',
