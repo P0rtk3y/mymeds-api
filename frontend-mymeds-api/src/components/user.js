@@ -86,7 +86,7 @@ class User {
         medData.sort((a,b) => (a.name > b.name) ? 1 : -1).forEach(med => {
             if ((currentTime > 1 && currentTime < 16) && (med.time_of === 'morning')){
                render(med)
-            } else if (med.time_of === 'evening'){
+            } else if ((currentTime > 15 && currentTime < 25) && (med.time_of === 'evening')){
                render(med)
             }
         })
@@ -121,8 +121,8 @@ class User {
         let home = document.querySelector(".timeImg")
         home.addEventListener('click', e => {
             e.preventDefault()
-            e.stopPropagation()
             this.getUserMeds()
+            e.stopPropagation()
         }, false)
     }
 

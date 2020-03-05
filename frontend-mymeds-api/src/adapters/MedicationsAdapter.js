@@ -35,6 +35,7 @@ class MedicationsAdapter {
 
     updateMedication(medId, userId, addTime){
         const medication = {
+            id: medId,
             user_id: userId,
             time_of: addTime
         }

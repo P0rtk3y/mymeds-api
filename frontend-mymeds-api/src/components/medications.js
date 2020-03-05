@@ -67,16 +67,16 @@ class Medications {
 
         submit_med.addEventListener("click", e => {
             e.preventDefault()
-            e.stopPropagation()
             this.renderMedCard(med_input.value)
+            e.stopPropagation()
         }, false)
 
     }
 
     renderMedCard(myMed){
-        const medCard = this.medications.find(medication => medication.name === myMed)
+        let medCard = this.medications.find(medication => medication.name === myMed)
         if(!!medCard){
-            const medId = medCard.id 
+            let medId = medCard.id 
             this.adapter.getMedication(medId)
                 .then(medication => {
                     this.medication = new Medication(medication)

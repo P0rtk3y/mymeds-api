@@ -13,10 +13,9 @@ class Medication {
 
     initBindingsAndEventListeners(){
         this.div = document.querySelector('#login-input')
-        this.buttonEvent = document.querySelector('#buttons')
         this.headerId= document.querySelector('#headerId')
         this.addMedBtn = document.querySelector('#myMed-button')
-        this.buttonEvent.addEventListener("click", this.eventFunc.bind(this), false)
+        this.med_input = document.querySelector('#searchBar')
     }
 
     renderMedication(){ 
@@ -64,8 +63,8 @@ class Medication {
         this.colorize()
         this.addMedBtn.addEventListener("click", e => {
             e.preventDefault()
-            e.stopPropagation()
             this.addMedToUser()
+            e.stopPropagation()
         }, false)
     }
 
@@ -86,10 +85,14 @@ class Medication {
     }
 
     addMedToUser(){
-        const medId = this.id
-        let userId = this.headerId.innerHTML
-        let addTime = document.querySelector("#time").value
-        this.adapter.updateMedication(medId, userId, addTime)
+        if(this.med_input.value === this.name){
+            let medId = this.id
+            let userId = this.headerId.innerHTML
+            let addTime = document.querySelector("#time").value
+            this.adapter.updateMedication(medId, userId, addTime)
+        }
+        this.med_input.value = ""
+        new Medications()
     }
 
 
